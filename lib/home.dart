@@ -1,22 +1,13 @@
-// import 'db/function/db_functions.dart';
-// import 'model/data_model.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:students/database/functions/db_functions.dart';
 import 'package:students/search_page.dart';
-
 import 'add_student.dart';
-
 import 'list_student.dart';
-
-// ignore: camel_case_types
 class HomeScreen extends StatelessWidget {
  const HomeScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    // getAllStudents();
     return  Scaffold(backgroundColor: Colors.black,
         appBar: AppBar(
           backgroundColor: Colors.white30,
@@ -45,8 +36,7 @@ class HomeScreen extends StatelessWidget {
               Icons.add,
               size: 30,
             ),
-        ),
-      
+        ),      
     );
   }
 }

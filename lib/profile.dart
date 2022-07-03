@@ -1,15 +1,11 @@
 import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:get/instance_manager.dart';
-import 'package:students/database/functions/db_functions.dart';
 import 'package:students/database/model/data_model.dart';
 import 'package:students/edit_screen.dart';
-
-// ignore: camel_case_types
-class profile_screen extends StatelessWidget {  
+class ProfileScreen extends StatelessWidget {  
   final studentModel data;
-  const profile_screen({Key? key, required this.data}) : super(key: key); 
+  const ProfileScreen({Key? key, required this.data}) : super(key: key); 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,20 +40,6 @@ class profile_screen extends StatelessWidget {
                           image: DecorationImage(
                           image:  MemoryImage( const Base64Decoder().convert(data.image.toString())),fit: BoxFit.fill)),),
                       )
-                      // Container(
-                      //     child: CircleAvatar(
-                      //         radius: 80,
-                      //         child: img.trim().isEmpty
-                      //             ? CircleAvatar(
-                      //                 radius: 80,
-                      //                 backgroundImage: MemoryImage(
-                      //                     const Base64Decoder()
-                      //                         .convert(data.image.toString())),
-                      //               )
-                      //             : Container(
-                      //                 color: const Color.fromARGB(
-                      //                     255, 127, 115, 238),
-                      //               ))),
                       , SizedBox(height: MediaQuery.of(context).size.height*0.03),
                       ListTile(leading:const Text('Name :' , style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),maxLines: 2,),
                       title: Text(data.name.toUpperCase(),style: const TextStyle(fontSize: 15)),),
@@ -66,11 +48,8 @@ class profile_screen extends StatelessWidget {
                         ListTile(leading:const Text('Guardian :' , style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),maxLines: 2,),
                         title: Text(data.guardian.toUpperCase(),style: const TextStyle(fontSize: 15)),),
                          ListTile(leading:const Text('Contact :' , style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),maxLines: 2,),
-                         title: Text(data.contact.toUpperCase(),style: const TextStyle(fontSize: 15)),),
-                        
-                       SizedBox(
-                        height: MediaQuery.of(context).size.height*0.02,
-                      ),
+                         title: Text(data.contact.toUpperCase(),style: const TextStyle(fontSize: 15)),),                        
+                       SizedBox(height: MediaQuery.of(context).size.height*0.02 ),
                       ElevatedButton(
                           onPressed: () {
                             Get.to(()=> EditScreen(data: data));                         

@@ -6,13 +6,11 @@ import 'package:students/database/model/data_model.dart';
 import 'package:students/home.dart';
 class EditScreen extends StatelessWidget {
   final studentModel data;
-
   EditScreen({Key? key, required this.data}) : super(key: key);
   final nameUpdateController = TextEditingController();
   final ageUpdateController = TextEditingController();
   final guardianUpdateController = TextEditingController();
   final contactUpdateController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     nameUpdateController.text = data.name;
@@ -38,8 +36,7 @@ class EditScreen extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 80,
-                    backgroundImage: MemoryImage(
-                        const Base64Decoder().convert(data.image.toString())),
+                    backgroundImage: MemoryImage( const Base64Decoder().convert(data.image.toString())),
                   ),
                   const SizedBox(height: 30),
                   Center(
@@ -50,28 +47,22 @@ class EditScreen extends StatelessWidget {
                         decoration: const InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
-                          border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(15))),
+                          border: OutlineInputBorder( borderRadius:BorderRadius.all(Radius.circular(15))),
                           labelText: 'Name',
                           hintStyle: TextStyle(color: Colors.white70),
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 30,
-                  ),
+                  const SizedBox(height: 30),
                   Center(
                     child: Padding(
                       padding: const EdgeInsets.only(left: 35, right: 35),
-                      child: TextFormField(
-                        controller: ageUpdateController,
+                      child: TextFormField( controller: ageUpdateController,
                         decoration: const InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
-                          border: OutlineInputBorder(
-                              borderRadius:
+                          border: OutlineInputBorder(  borderRadius:
                                   BorderRadius.all(Radius.circular(15))),
                           labelText: 'Age',
                           hintStyle: TextStyle(color: Colors.white),
@@ -79,54 +70,42 @@ class EditScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 30,
-                  ),
+                  const SizedBox(height: 30),
                   Center(
                     child: Padding(
                       padding: const EdgeInsets.only(left: 35, right: 35),
-                      child: TextFormField(
-                        controller: guardianUpdateController,
+                      child: TextFormField(controller: guardianUpdateController,
                         decoration: const InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
-                          border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(15))),
+                          border: OutlineInputBorder( borderRadius: BorderRadius.all(Radius.circular(15))),
                           labelText: 'Guardian name',
                           hintStyle: TextStyle(color: Colors.white70),
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 30,
-                  ),
+                  const SizedBox( height: 30),
                   Center(
                     child: Padding(
                       padding: const EdgeInsets.only(left: 35, right: 35),
-                      child: TextFormField(
-                        controller: contactUpdateController,
+                      child: TextFormField( controller: contactUpdateController,
                         decoration: const InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
                           border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(15))),
+                              borderRadius: BorderRadius.all(Radius.circular(15))),
                           labelText: 'Contact',
                           hintStyle: TextStyle(color: Colors.white70),
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 30,
-                  ),
+                  const SizedBox(height: 30 ),
                   ElevatedButton(
                       onPressed: () async {
                         studentupdate(context);
-                      },
-                      child: const Text('update'))
+                      }, child: const Text('update'))
                 ],
               ),
             ),
@@ -135,9 +114,7 @@ class EditScreen extends StatelessWidget {
       )),
     );
   }
-
   Future<void> studentupdate(BuildContext context) async {
-    // final img = imagecontroller;
     final name = nameUpdateController.text;
     final age = ageUpdateController.text;
     final guardian = guardianUpdateController.text;
@@ -147,7 +124,6 @@ class EditScreen extends StatelessWidget {
       return;
     }
     final studentvalue = studentModel(
-      // image: img,
       name: name,
       age: age,
       guardian: guardian,

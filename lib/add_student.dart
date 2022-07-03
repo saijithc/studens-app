@@ -6,32 +6,13 @@ import 'package:students/database/functions/db_functions.dart';
 import 'package:students/home.dart';
 import 'database/model/data_model.dart';
 
-// ignore: camel_case_types
-// class add_Screen extends StatefulWidget {
-//   const add_Screen({Key? key}) : super(key: key);
 
-//   @override
-//   State<add_Screen> createState() => _add_screenState();
-// }
-
-// final _nameController = TextEditingController();
-
-// final _ageController = TextEditingController();
-// final _guardianController = TextEditingController();
-// final _contactController = TextEditingController();
-
-// // final _image = ImagePicker();
-
-// // ignore: camel_case_types
-// class _add_screenState extends State<add_Screen> {
-//   File? image;
 class AddScreen extends StatelessWidget {
    final _nameController = TextEditingController();
    final _ageController = TextEditingController();
    final _guardianController = TextEditingController();
    final _contactController = TextEditingController();
 
-// // final _image = ImagePicker();
   AddScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -43,7 +24,6 @@ class AddScreen extends StatelessWidget {
             'Add Students',
             style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold),
           ),
-          // actions: <Widget>[IconButton(onPressed: () {}, icon: Icon(Icons.list))],
         ),
         backgroundColor: Colors.black,
         body: SafeArea(
@@ -184,8 +164,7 @@ class AddScreen extends StatelessWidget {
               ),
             )
           ]),
-        ),
-      
+        ),      
     );
   }
 
@@ -201,8 +180,7 @@ class AddScreen extends StatelessWidget {
         _contact.isEmpty ||_img.isEmpty) {
       return;
     }
-    Get.snackbar("Uploaded", "Student details uploaded",snackPosition: SnackPosition.BOTTOM,duration: const Duration(seconds: 2),backgroundColor: const Color.fromARGB(255, 96, 254, 252));
-   
+    Get.snackbar("Uploaded", "Student details uploaded",snackPosition: SnackPosition.BOTTOM,duration: const Duration(seconds: 2),backgroundColor: const Color.fromARGB(255, 96, 254, 252));   
     final _student = studentModel(
       name: _name,
       age: _age,
@@ -216,6 +194,5 @@ class AddScreen extends StatelessWidget {
     _ageController.clear();
     _guardianController.clear();
     _contactController.clear();
-
   }
 }
