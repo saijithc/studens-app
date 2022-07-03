@@ -1,20 +1,17 @@
 import 'dart:convert';
-
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:get/instance_manager.dart';
 import 'package:students/database/functions/db_functions.dart';
 import 'package:students/database/model/data_model.dart';
 import 'package:students/edit_screen.dart';
 
 // ignore: camel_case_types
-class profile_screen extends StatelessWidget {
+class profile_screen extends StatelessWidget {  
   final studentModel data;
- 
-  const profile_screen({Key? key, required this.data}) : super(key: key);
- 
+  const profile_screen({Key? key, required this.data}) : super(key: key); 
   @override
   Widget build(BuildContext context) {
-    
-    // var child;
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -31,8 +28,8 @@ class profile_screen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(top: 48),
                 child: Container(
-                  width: 330,
-                  height: 600,
+                  width:  MediaQuery.of(context).size.height*0.4,
+                  height: MediaQuery.of(context).size.height*0.7,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(90),
                     color: const Color.fromARGB(255, 173, 246, 248),
@@ -40,38 +37,43 @@ class profile_screen extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Container(
-                          child: CircleAvatar(
-                              radius: 80,
-                              child: img.trim().isEmpty
-                                  ? CircleAvatar(
-                                      radius: 80,
-                                      backgroundImage: MemoryImage(
-                                          const Base64Decoder()
-                                              .convert(data.image.toString())),
-                                    )
-                                  : Container(
-                                      color: const Color.fromARGB(
-                                          255, 127, 115, 238),
-                                    ))),
-                      const SizedBox(height: 40),
-                      Text('Name :  ${data.name}',
-                          style: const TextStyle(fontSize: 20)),
-                      Text('Age :  ${data.age}',
-                          style: const TextStyle(fontSize: 20)),
-                      Text('Guardian : ${data.guardian}',
-                          style: const TextStyle(fontSize: 20)),
-                      Text('Contact  : ${data.contact}',
-                          style: const TextStyle(fontSize: 20)),
-                      const SizedBox(
-                        height: 50,
+                      SizedBox(
+                        child: Container(
+                          height: MediaQuery.of(context).size.height*0.2,
+                        width: MediaQuery.of(context).size.width*0.4,decoration: BoxDecoration(borderRadius: BorderRadius.circular(16),
+                          image: DecorationImage(
+                          image:  MemoryImage( const Base64Decoder().convert(data.image.toString())),fit: BoxFit.fill)),),
+                      )
+                      // Container(
+                      //     child: CircleAvatar(
+                      //         radius: 80,
+                      //         child: img.trim().isEmpty
+                      //             ? CircleAvatar(
+                      //                 radius: 80,
+                      //                 backgroundImage: MemoryImage(
+                      //                     const Base64Decoder()
+                      //                         .convert(data.image.toString())),
+                      //               )
+                      //             : Container(
+                      //                 color: const Color.fromARGB(
+                      //                     255, 127, 115, 238),
+                      //               ))),
+                      , SizedBox(height: MediaQuery.of(context).size.height*0.03),
+                      ListTile(leading:const Text('Name :' , style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),maxLines: 2,),
+                      title: Text(data.name.toUpperCase(),style: const TextStyle(fontSize: 15)),),
+                       ListTile(leading:const Text('Age :' , style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),maxLines: 2,),
+                       title: Text(data.age.toUpperCase(),style: const TextStyle(fontSize: 15)),),
+                        ListTile(leading:const Text('Guardian :' , style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),maxLines: 2,),
+                        title: Text(data.guardian.toUpperCase(),style: const TextStyle(fontSize: 15)),),
+                         ListTile(leading:const Text('Contact :' , style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),maxLines: 2,),
+                         title: Text(data.contact.toUpperCase(),style: const TextStyle(fontSize: 15)),),
+                        
+                       SizedBox(
+                        height: MediaQuery.of(context).size.height*0.02,
                       ),
                       ElevatedButton(
                           onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (ctx) => edit_screen(
-                                      data: data,
-                                    )));
+                            Get.to(()=> EditScreen(data: data));                         
                           },
                           child: const Text('Edit Profile'))
                     ],

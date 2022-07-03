@@ -1,30 +1,13 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:students/database/functions/db_functions.dart';
 import 'package:students/database/model/data_model.dart';
 import 'package:students/home.dart';
-
-
-// ignore: camel_case_types
-class edit_screen extends StatelessWidget {
+class EditScreen extends StatelessWidget {
   final studentModel data;
 
-  edit_screen({Key? key, required this.data}) : super(key: key);
-  // final String name;
-  // final String age;
-  // final String guardian;
-  // final String contact;
-  // int? id;
-  // edit_screen({
-  //   Key? key,
-  //   required this.name,
-  //   required this.age,
-  //   required this.guardian,
-  //   required this.contact,
-  //   this.id,
-  // }) : super(key: key);
-  // var imagecontroller = img;
+  EditScreen({Key? key, required this.data}) : super(key: key);
   final nameUpdateController = TextEditingController();
   final ageUpdateController = TextEditingController();
   final guardianUpdateController = TextEditingController();
@@ -32,7 +15,6 @@ class edit_screen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // imagecontroller ;
     nameUpdateController.text = data.name;
     ageUpdateController.text = data.age;
     guardianUpdateController.text = data.guardian;
@@ -67,7 +49,7 @@ class edit_screen extends StatelessWidget {
                         controller: nameUpdateController,
                         decoration: const InputDecoration(
                           filled: true,
-                          fillColor: Color.fromARGB(255, 103, 103, 103),
+                          fillColor: Colors.white,
                           border: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(15))),
@@ -87,12 +69,12 @@ class edit_screen extends StatelessWidget {
                         controller: ageUpdateController,
                         decoration: const InputDecoration(
                           filled: true,
-                          fillColor: Color.fromARGB(255, 103, 103, 103),
+                          fillColor: Colors.white,
                           border: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(15))),
                           labelText: 'Age',
-                          hintStyle: TextStyle(color: Colors.white70),
+                          hintStyle: TextStyle(color: Colors.white),
                         ),
                       ),
                     ),
@@ -107,7 +89,7 @@ class edit_screen extends StatelessWidget {
                         controller: guardianUpdateController,
                         decoration: const InputDecoration(
                           filled: true,
-                          fillColor: Color.fromARGB(255, 103, 103, 103),
+                          fillColor: Colors.white,
                           border: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(15))),
@@ -127,7 +109,7 @@ class edit_screen extends StatelessWidget {
                         controller: contactUpdateController,
                         decoration: const InputDecoration(
                           filled: true,
-                          fillColor: Color.fromARGB(255, 103, 103, 103),
+                          fillColor: Colors.white,
                           border: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(15))),
@@ -174,7 +156,6 @@ class edit_screen extends StatelessWidget {
       image: data.image,
     );
     await updatestudent(data.id, studentvalue);
-    Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (ctx) => home_screen()));
+    Get.offAll(()=> const HomeScreen());
   }
 }

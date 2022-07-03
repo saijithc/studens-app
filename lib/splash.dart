@@ -1,33 +1,17 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-
-
 import 'home.dart';
-
-class Splash_Screen extends StatefulWidget {
-  const Splash_Screen({Key? key}) : super(key: key);
-
-  @override
-  State<Splash_Screen> createState() => _Splash_ScreenState();
-}
-
-class _Splash_ScreenState extends State<Splash_Screen> {
-  void initState() {
-    gotohome(context);
-  }
-
-  @override
+class SplashScreen extends StatelessWidget {
+ const SplashScreen({Key? key}) : super(key: key);
+ @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(child: Image.asset('assets/brototype.jpg')),
+    return AnimatedSplashScreen(splashIconSize: MediaQuery.of(context).size.height*0.25,
+      splash: 'assets/brototype.jpg',
+      nextScreen: const HomeScreen(),
+      splashTransition: SplashTransition.rotationTransition,
+      // pageTransitionType: PageTransitionType.scale,
     );
   }
 }
 
-Future<void> gotohome(BuildContext context) async {
-  await Future.delayed(
-    Duration(seconds: 3),
-  );
-  Navigator.of(context)
-      .pushReplacement(MaterialPageRoute(builder: (ctx) => home_screen()));
-}
+
